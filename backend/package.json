@@ -12,10 +12,17 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@adminjs/fastify": "^4.1.3",
+    "@adminjs/mongoose": "^4.1.0",
+    "@adminjs/themes": "^1.0.1",
+    "@fastify/cookie": "^10.0.0",
+    "@fastify/session": "^11.0.0",
+    "adminjs": "^7.8.13",
     "blinkit": "file:",
+    "connect-mongodb-session": "^5.0.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
-    "fastify": "^5.0.0",
+    "fastify": "^4.28.1",
     "mongoose": "^8.6.3",
     "tslib": "^2.7.0"
   }
