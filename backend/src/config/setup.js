@@ -33,6 +33,8 @@ export const admin = new AdminJs({
             }
         },
         { resource: Models.Branch },
+        { resource: Models.Product },
+        { resource: Models.Category },
     ],
     branding: {
         companyName: "Blinkit",
