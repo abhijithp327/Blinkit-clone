@@ -114,13 +114,13 @@ export const confirmOrder = async (req, reply) => {
 
         order.deliveryPartner = userId;
 
-        console.log("deliveryPerson",order.deliveryPerson);
-
         order.deliveryPersonLocation = {
             latitude: deliveryPersonLocation?.latitude,
             longitude: deliveryPersonLocation?.longitude,
             address: deliveryPersonLocation?.address || ''
         };
+
+        req.server.io.to(orderId).emit('orderConfirmed', order);
 
         await order.save();
 
@@ -194,6 +194,8 @@ export const updateOrderStatus = async (req, reply) => {
 
         await order.save();
 
+        req.server.io.to(orderId).emit('liveTrackingUpdates', order);
+
         return reply.code(200).send({
             status: 200,
             success: true,
@@ -251,6 +253,7 @@ export const getOrders = async (req, reply) => {
             message: "Orders fetched successfully",
             orders
         });
+
     } catch (error) {
         console.log(error);
         return reply.code(500).send({
